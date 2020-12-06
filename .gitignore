@@ -1,0 +1,7 @@
+# dotnet core
+bin/
+obj/
+
+# IDE
+.idea/
+.vs/
