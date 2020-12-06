@@ -15,7 +15,5 @@ There I also found simple example with picture loading
                 pictureBox1.Image = myImage.ToBitmap();
             }
             
-[image]
-            
-	[image](./pictures/1.jpg)
-	[doc]: <http://www.emgu.com/wiki/index.php/Setting_up_EMGU_C_Sharp>
+
+[doc]: <http://www.emgu.com/wiki/index.php/Setting_up_EMGU_C_Sharp>
