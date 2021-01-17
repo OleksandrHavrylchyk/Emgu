@@ -5,3 +5,6 @@ obj/
 # IDE
 .idea/
 .vs/
+
+# Packages
+packages/

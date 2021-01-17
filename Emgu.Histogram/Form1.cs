@@ -7,10 +7,10 @@ namespace Emgu.Histogram
 {
     public partial class Form1 : Form
     {
-        Image<Bgr, byte> image;
-        Image<Gray, byte> redChannel;
-        Image<Gray, byte> greenChannel;
-        Image<Gray, byte> blueChannel;
+        private Image<Bgr, byte> image;
+        private Image<Gray, byte> redChannel;
+        private Image<Gray, byte> greenChannel;
+        private Image<Gray, byte> blueChannel;
         public Form1()
         {
             InitializeComponent();
@@ -78,11 +78,12 @@ namespace Emgu.Histogram
         {
             if (image != null)
             {
-                imageBox1.Image = image;
+                var grayImage = new Image<Gray, byte>(image.ToBitmap());
+                imageBox1.Image = grayImage;
 
                 histogramBox1.ClearHistogram();
 
-                histogramBox1.GenerateHistograms(image, 256);
+                histogramBox1.GenerateHistograms(grayImage, 256);
 
                 histogramBox1.Refresh();
             }
@@ -97,7 +98,14 @@ namespace Emgu.Histogram
 
                 CvInvoke.cvEqualizeHist(img.Ptr, equalized.Ptr);
 
-                imageBox1.Image = equalized;
+                imageBox2.Image = equalized;
+
+
+                histogramBox2.ClearHistogram();
+
+                histogramBox2.GenerateHistograms(equalized, 256);
+
+                histogramBox2.Refresh();
             }
         }
 
@@ -106,7 +114,13 @@ namespace Emgu.Histogram
             if (image != null)
             {
                 image._EqualizeHist();
-                imageBox1.Image = new Image<Gray, byte>(image.ToBitmap());
+                imageBox3.Image = new Image<Gray, byte>(image.ToBitmap());
+
+                histogramBox3.ClearHistogram();
+
+                histogramBox3.GenerateHistograms(new Image<Gray, byte>(image.ToBitmap()), 256);
+
+                histogramBox3.Refresh();
             }
         }
     }
